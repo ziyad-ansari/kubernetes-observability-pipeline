@@ -1,10 +1,11 @@
 {
   "version": 8,
-  "dashboardId": "oo-assignment-metrics-v8",
-  "title": "Kubernetes Metrics \u2014 Observability Pipeline",
+  "dashboardId": "7504058380302942208",
+  "title": "Kubernetes Metrics — Observability Pipeline",
   "description": "Key synthetic metrics and an ingestion-rate proxy from Vector-to-OpenObserve traffic.",
   "role": "",
   "owner": "",
+  "created": "2026-09-11T06:08:56.507Z",
   "tabs": [
     {
       "tabId": "default",
@@ -80,8 +81,27 @@
               "fields": {
                 "stream": "observability_demo_requests_total",
                 "stream_type": "metrics",
-                "x": [{"label": "Timestamp", "alias": "x_axis_1", "column": "x_axis_1", "color": null, "aggregationFunction": "histogram", "args": [{"value": null}]}],
-                "y": [{"label": "Value", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "avg"}],
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null,
+                    "args": [
+                      {
+                        "type": null
+                      }
+                    ]
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Value",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -102,12 +122,11 @@
             }
           ],
           "layout": {
-            "i": 1,
             "x": 0,
             "y": 0,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 1
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -183,8 +202,27 @@
               "fields": {
                 "stream": "observability_demo_cpu_usage_percent",
                 "stream_type": "metrics",
-                "x": [{"label": "Timestamp", "alias": "x_axis_1", "column": "x_axis_1", "color": null, "aggregationFunction": "histogram", "args": [{"value": null}]}],
-                "y": [{"label": "Value", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "avg"}],
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null,
+                    "args": [
+                      {
+                        "type": null
+                      }
+                    ]
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Value",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -205,12 +243,11 @@
             }
           ],
           "layout": {
-            "i": 2,
             "x": 48,
             "y": 0,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 2
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -286,8 +323,27 @@
               "fields": {
                 "stream": "observability_demo_memory_usage_bytes",
                 "stream_type": "metrics",
-                "x": [{"label": "Timestamp", "alias": "x_axis_1", "column": "x_axis_1", "color": null, "aggregationFunction": "histogram", "args": [{"value": null}]}],
-                "y": [{"label": "Value", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "avg"}],
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null,
+                    "args": [
+                      {
+                        "type": null
+                      }
+                    ]
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Value",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -308,12 +364,11 @@
             }
           ],
           "layout": {
-            "i": 3,
             "x": 0,
             "y": 24,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 3
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -390,7 +445,14 @@
                 "stream": "observability_demo_requests_total",
                 "stream_type": "metrics",
                 "x": [],
-                "y": [{"label": "Metric Samples", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "count"}],
+                "y": [
+                  {
+                    "label": "Metric Samples",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -411,12 +473,11 @@
             }
           ],
           "layout": {
-            "i": 4,
             "x": 48,
             "y": 24,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 4
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -424,5 +485,9 @@
         }
       ]
     }
-  ]
+  ],
+  "variables": {
+    "showDynamicFilters": false,
+    "list": []
+  }
 }

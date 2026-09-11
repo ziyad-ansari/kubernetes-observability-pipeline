@@ -158,7 +158,6 @@ The assignment target is approximately 5 GB/hour of logs and 5 GB/hour of metric
 - Cluster administration uses a dedicated Terraform-created IAM role and EKS access entry.
 - Vector runs as non-root with a RuntimeDefault seccomp profile, dropped capabilities, a read-only root filesystem, and no service-account token.
 - Vector has no Kubernetes RBAC permissions because it only generates and ships synthetic telemetry.
-- OpenObserve credentials are stored in Kubernetes Secrets and excluded from Git.
 - Local `terraform.tfvars` and generated Secret manifests are ignored; only example templates are committed.
 - OpenObserve data uses a persistent `gp2` volume.
 

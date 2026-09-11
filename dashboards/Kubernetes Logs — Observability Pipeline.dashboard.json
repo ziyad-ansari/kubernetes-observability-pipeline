@@ -1,10 +1,11 @@
 {
   "version": 8,
-  "dashboardId": "oo-assignment-logs-v8",
-  "title": "Kubernetes Logs \u2014 Observability Pipeline",
+  "dashboardId": "7504058534753992704",
+  "title": "Kubernetes Logs — Observability Pipeline",
   "description": "Log volume, level distribution and top services for the Kubernetes observability assignment.",
   "role": "",
   "owner": "",
+  "created": "2026-09-11T06:09:33.326Z",
   "tabs": [
     {
       "tabId": "default",
@@ -80,8 +81,28 @@
               "fields": {
                 "stream": "k8s_demo_logs",
                 "stream_type": "logs",
-                "x": [{"label": "Timestamp", "alias": "x_axis_1", "column": "x_axis_1", "color": null, "aggregationFunction": "histogram", "sortBy": "ASC", "args": [{"value": null}]}],
-                "y": [{"label": "Events", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "count"}],
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null,
+                    "sortBy": "ASC",
+                    "args": [
+                      {
+                        "type": null
+                      }
+                    ]
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Events",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -102,12 +123,11 @@
             }
           ],
           "layout": {
-            "i": 1,
             "x": 0,
             "y": 0,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 1
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -183,8 +203,22 @@
               "fields": {
                 "stream": "k8s_demo_logs",
                 "stream_type": "logs",
-                "x": [{"label": "Level", "alias": "x_axis_1", "column": "x_axis_1", "color": null}],
-                "y": [{"label": "Events", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "count"}],
+                "x": [
+                  {
+                    "label": "Level",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Events",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -205,12 +239,11 @@
             }
           ],
           "layout": {
-            "i": 2,
             "x": 48,
             "y": 0,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 2
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -286,8 +319,22 @@
               "fields": {
                 "stream": "k8s_demo_logs",
                 "stream_type": "logs",
-                "x": [{"label": "Service", "alias": "x_axis_1", "column": "x_axis_1", "color": null}],
-                "y": [{"label": "Events", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "count"}],
+                "x": [
+                  {
+                    "label": "Service",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Events",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -308,12 +355,11 @@
             }
           ],
           "layout": {
-            "i": 3,
             "x": 0,
             "y": 24,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 3
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -389,8 +435,22 @@
               "fields": {
                 "stream": "k8s_demo_logs",
                 "stream_type": "logs",
-                "x": [{"label": "Status Code", "alias": "x_axis_1", "column": "x_axis_1", "color": null}],
-                "y": [{"label": "Events", "alias": "y_axis_1", "column": "y_axis_1", "color": null, "aggregationFunction": "count"}],
+                "x": [
+                  {
+                    "label": "Status Code",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Events",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null
+                  }
+                ],
                 "z": [],
                 "breakdown": [],
                 "filter": {
@@ -411,12 +471,11 @@
             }
           ],
           "layout": {
-            "i": 4,
             "x": 48,
             "y": 24,
             "w": 48,
             "h": 24,
-            "moved": false
+            "i": 4
           },
           "htmlContent": "",
           "markdownContent": "",
@@ -424,5 +483,9 @@
         }
       ]
     }
-  ]
+  ],
+  "variables": {
+    "showDynamicFilters": false,
+    "list": []
+  }
 }
