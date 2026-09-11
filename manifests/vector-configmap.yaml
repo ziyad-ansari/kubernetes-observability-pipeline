@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vector-config
+  namespace: observability
+data:
+  vector.toml: |
+    data_dir = "/var/lib/vector"
+    
+    [api]
+    enabled = true
+    address = "0.0.0.0:8686"
+    
+    [sources.demo_logs]
+    type = "demo_logs"
+    format = "json"
+    # Two pods at 1 / 0.0008 ~= 1250 events/sec each. Calibrate using OpenObserve ingestion.
+    interval = ${DEMO_INTERVAL_SECS}
+    
+    [transforms.enrich_logs]
+    type = "remap"
+    inputs = ["demo_logs"]
+    source = '''
+    # Add stable dimensions and synthetic measurements.
+    .service_selector = random_int(0, 4)
+    .service = if .service_selector == 0 { "checkout" } else if .service_selector == 1 { "payments" } else if .service_selector == 2 { "search" } else if .service_selector == 3 { "catalog" } else { "orders" }
+    .level_selector = random_int(0, 3)
+    .level = if .level_selector == 0 { "INFO" } else if .level_selector == 1 { "WARN" } else if .level_selector == 2 { "ERROR" } else { "DEBUG" }
+    .status_code = if .level == "ERROR" { 500 } else if .level == "WARN" { 429 } else { 200 }
+    .event_count = 1
+    .cpu_usage_percent = random_float(5.0, 95.0)
+    .memory_usage_bytes = random_int(100000000, 500000000)
+    .request_duration_ms = random_float(5.0, 800.0)
+    .queue_depth = random_int(0, 500)
+    .message = "synthetic observability event"
+    .payload = "${DEMO_PAYLOAD}"
+    '''
+    
+    [transforms.to_metrics]
+    type = "log_to_metric"
+    inputs = ["enrich_logs"]
+    metrics = [
+      { type = "counter", field = ".event_count", name = "demo_requests_total", namespace = "observability", tags = { service = "{{service}}", level = "{{level}}" } },
+      { type = "counter", field = ".status_code", name = "demo_status_code_total", namespace = "observability", increment_by_value = false, tags = { service = "{{service}}", status_code = "{{status_code}}" } },
+      { type = "gauge", field = ".cpu_usage_percent", name = "demo_cpu_usage_percent", namespace = "observability", tags = { service = "{{service}}" } },
+      { type = "gauge", field = ".memory_usage_bytes", name = "demo_memory_usage_bytes", namespace = "observability", tags = { service = "{{service}}" } },
+      { type = "gauge", field = ".request_duration_ms", name = "demo_request_duration_ms", namespace = "observability", tags = { service = "{{service}}" } },
+      { type = "gauge", field = ".queue_depth", name = "demo_queue_depth", namespace = "observability", tags = { service = "{{service}}" } }
+    ]
+    
+    [sinks.openobserve_logs]
+    type = "http"
+    inputs = ["enrich_logs"]
+    uri = "${OPENOBSERVE_ENDPOINT}/api/${OPENOBSERVE_ORG}/k8s_demo_logs/_json"
+    method = "post"
+    encoding.codec = "json"
+    encoding.timestamp_format = "rfc3339"
+    compression = "gzip"
+    auth.strategy = "basic"
+    auth.user = "${OPENOBSERVE_USERNAME}"
+    auth.password = "${OPENOBSERVE_PASSWORD}"
+    healthcheck.enabled = true
+    healthcheck.uri = "${OPENOBSERVE_ENDPOINT}/healthz"
+    batch.max_events = 5000
+    batch.timeout_secs = 1
+    request.timeout_secs = 60
+    request.concurrency = "adaptive"
+    
+    [sinks.openobserve_metrics]
+    type = "prometheus_remote_write"
+    inputs = ["to_metrics"]
+    endpoint = "${OPENOBSERVE_ENDPOINT}/api/${OPENOBSERVE_ORG}/prometheus/api/v1/write"
+    compression = "snappy"
+    auth.strategy = "basic"
+    auth.user = "${OPENOBSERVE_USERNAME}"
+    auth.password = "${OPENOBSERVE_PASSWORD}"
+    healthcheck.enabled = false
+    batch.max_events = 5000
+    batch.timeout_secs = 1
+    request.timeout_secs = 60
+    request.concurrency = "adaptive"
+    expire_metrics_secs = 3600

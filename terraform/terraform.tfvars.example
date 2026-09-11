@@ -1,0 +1,27 @@
+# cluster_admin_role_name = "EKSPlatformAdmin"
+project_name = "oo-observability"
+environment  = "lab"
+region       = "ap-south-1"
+cluster_name = "oo-observability-eks"
+
+
+node_instance_types = ["m7i-flex.large"]
+
+node_min_size     = 2
+node_desired_size = 2
+node_max_size     = 4
+
+# Add IAM principals here when additional EKS access is required.
+# additional_access_entries = {
+#   platform_admin = {
+#     principal_arn = "arn:aws:iam::123456789012:role/EKSPlatformAdmin"
+#     policy_associations = {
+#       cluster_admin = {
+#         policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+#         access_scope = {
+#           type = "cluster"
+#         }
+#       }
+#     }
+#   }
+# }
