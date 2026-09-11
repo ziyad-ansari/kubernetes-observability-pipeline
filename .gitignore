@@ -1,0 +1,10 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+.terraform.lock.hcl
+terraform.tfvars
+manifests/openobserve-secret.yaml
+openobserve/openobserve-secret.yaml
+.DS_Store
